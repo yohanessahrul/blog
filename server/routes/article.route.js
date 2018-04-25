@@ -16,10 +16,28 @@ router.get('/list', function(req, res) {
   })
 })
 
+router.get('/detailarticle/:id', function(req, res) {
+  Article.findById({
+    _id: req.params.id
+  },function(err, response) {
+    if(!err){
+      res.status(200).json({
+        message: '',
+        data: response
+      })
+    } else {
+      res.status(500).json({
+        message: 'Data internal error cuy'
+      })
+    }
+  })
+})
+
 router.post('/create', function(req, res) {
   let newArticle = new Article({
       title: req.body.title,
-      description: req.body.description
+      description: req.body.description,
+      url: req.body.url
     })
   
     newArticle.save(function(err, response) {

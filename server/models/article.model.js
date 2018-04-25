@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({ 
   title: String,
-  description: String
+  description: String,
+  url: String
 }, {
   timestamps: true
 });
